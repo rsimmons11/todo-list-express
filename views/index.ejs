@@ -5,43 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+<!-- link to font-awesome library     -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- link to stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<!-- title expressing the highest level of importance.     -->
     <h1>Todo List: </h1>
+<!-- unordered list with a class of todoItems -->
     <ul class="todoItems">
+<!-- embedded javascript to start a 'for'loop         -->
     <% for(let i=0; i < items.length; i++) {%>
+<!-- creating list item with a class of 'item' -->
         <li class="item">
+<!--EJS to check if item in an array with a completed property is true-->
             <% if(items[i].completed === true) {%>
+<!--creating an inline element with a class and adding EJS to display name of the task-->                
                 <span class='completed'><%= items[i].thing %></span>
-            <% }else{ %>
+<!--EJS for else clause of the if statement-->
+                <% }else{ %>
+<!--added EJS to display the name of the task with NO CLASS-->                    
                 <span><%= items[i].thing %></span>
-            <% } %>    
+            <% } %>
+<!--inline element to display font awesome trash can-->                
             <span class='fa fa-trash'></span>
         </li>
     <% } %>
     </ul>
 
+<!--creating a header level 2 with text and using EJS to display number of tasks remaining-->    
     <h2>Left to do: <%= left %></h2>
 
+<!--creating header level 2 displaying text-->
     <h2>Add A Todo:</h2>
 
+<!--creating a form with a POST method that follows /addTodo route-->    
     <form action="/addTodo" method="POST">
+<!--create an input box that accepts text with default text inside of it before you type something. input box is given name for later reference-->        
         <input type="text" placeholder="Thing To Do" name="todoItem">
         <input type="submit">
     </form>
     
 
+<!--links to the main.js file in the js folder in the public folder-->    
     <script src='js/main.js'></script>
 </body>
 </html>
